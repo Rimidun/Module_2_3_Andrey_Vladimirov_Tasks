@@ -1,19 +1,29 @@
 package project.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
-@AllArgsConstructor
+import javax.persistence.*;
+
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
+@ToString
+@Entity
+@Table(name = "labels")
 public class Label {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    @EqualsAndHashCode.Exclude
     private Long id;
+
+    @Column(name = "name")
     private String name;
-    //private List<Label> labels;
 
     public Label(String name) {
-        this.id = null;
         this.name = name;
     }
 }
