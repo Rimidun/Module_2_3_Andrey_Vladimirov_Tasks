@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Set;
 
 public final class ObjectFactory {
-    private Reflections reflections = new Reflections("com.nazarov");
+    private Reflections reflections = new Reflections("project");
     private SessionFactory sessionFactory = null;
 
     private SessionFactory createSessionFactory(){

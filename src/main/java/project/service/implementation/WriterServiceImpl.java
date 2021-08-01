@@ -19,10 +19,8 @@ public class WriterServiceImpl implements WriterService {
         this.writerRepository = (WriterRepositoryImpl) ApplicationContext.init().getBean("WriterRepositoryImpl");
     }
 
-    /**
-     * This constructor is test only
-     * @param writerRepository is Mock
-     */
+    // This constructor is test only @param writerRepository is Mock
+
     private WriterServiceImpl(WriterRepositoryImpl writerRepository) {
         this.writerRepository = writerRepository;
     }
@@ -61,7 +59,7 @@ public class WriterServiceImpl implements WriterService {
     public boolean remove(Writer writer) {
         writerRepository.remove(writer);
         Writer result = writerRepository.getById(writer.getId());
-        if(result == null){
+        if (result == null) {
             return true;
         }
 

@@ -17,11 +17,8 @@ public class LabelServiceImpl implements LabelService {
         this.labelRepository = (LabelRepositoryImpl) ApplicationContext.init().getBean("LabelRepositoryImpl");
     }
 
-    /**
-     * This constructor is test only.
-     *
-     * @param labelRepository is Mock.
-     */
+    // This constructor is test only @param labelRepository is Mock
+
     @Deprecated
     private LabelServiceImpl(LabelRepository labelRepository) {
         this.labelRepository = labelRepository;
@@ -48,10 +45,10 @@ public class LabelServiceImpl implements LabelService {
         }
 
         Label find = labelRepository.getById(label.getId());
-        if(find == null){
+        if (find == null) {
             log.warn("IN - update - label on id:{} not found", label.getId());
             return null;
-        }else if(find.equals(label)){
+        } else if (find.equals(label)) {
             return find;
         }
 

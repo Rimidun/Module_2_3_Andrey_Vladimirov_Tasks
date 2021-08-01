@@ -19,21 +19,19 @@ public class PostServiceImpl implements PostService {
         this.postRepository = (PostRepositoryImpl) ApplicationContext.init().getBean("PostRepositoryImpl");
     }
 
-    /**
-     * This construction is test only
-     * @param postRepository is Mock
-     */
-    private PostServiceImpl(PostRepository postRepository){
+    // // This constructor is test only @param postRepository is Mock
+
+    private PostServiceImpl(PostRepository postRepository) {
         this.postRepository = postRepository;
     }
 
     @Override
     public Post save(Post post) {
-        if(post == null){
+        if (post == null) {
             log.warn("IN - save - label is null.");
             return null;
         }
-        if(post.getWriter() == null){
+        if (post.getWriter() == null) {
             log.warn("IN - save - label.writer is null.");
             return post;
         }
@@ -77,7 +75,7 @@ public class PostServiceImpl implements PostService {
     public boolean remove(Post post) {
         postRepository.remove(post);
         Post result = getById(post.getId());
-        if(result == null){
+        if (result == null) {
             return true;
         }
         return false;
