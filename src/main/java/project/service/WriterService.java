@@ -2,12 +2,16 @@ package project.service;
 
 import project.entity.Writer;
 
+import java.util.List;
+
 public interface WriterService {
-    Writer get(Long id);
+
+    Writer save(Writer writer);
+    Writer update(Writer writer);
+    Writer getById(Long id);
     Writer getByFirstName(String firstName);
     Writer getByLastName(String lastName);
-    Writer getByLabel(Long labelId);
-    Writer update(Writer writer);
-    Writer save(Writer writer);
-    void remove(Writer writer);
+    List<Writer> getAll();
+    boolean remove(Writer writer);
+
 }

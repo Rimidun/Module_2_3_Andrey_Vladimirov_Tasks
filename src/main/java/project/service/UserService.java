@@ -1,13 +1,15 @@
 package project.service;
 
-import project.entity.dto.WriterDto;
+import project.entity.Writer;
+
 
 public interface UserService {
-    WriterDto save(WriterDto writerDto);
-    WriterDto update(WriterDto writerDto);
-    WriterDto get(Long id);
-    void remove(Long id);
 
-    WriterDto getByFirstName(String firstName);
-    WriterDto getByLastName(String lastName);
+    Writer save(Writer writer);
+    Writer update(Writer writer);
+    Writer get(Long id);
+    boolean remove(Writer writer);
+
+    Writer getByFirstName(String firstName);
+    Writer getByLastName(String lastName);
 }

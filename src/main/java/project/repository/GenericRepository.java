@@ -1,8 +1,12 @@
 package project.repository;
 
+import java.util.List;
+
 public interface GenericRepository<T, ID> {
-    T save(T entity);
-    T get(ID primaryKey);
-    T update(T entity);
-    void remove(ID primaryKey);
+    T getById(ID id);
+    T getByName(String name);
+    List<T> getAll();
+    T save(T o);
+    T update(T o);
+    void remove(T o);
 }

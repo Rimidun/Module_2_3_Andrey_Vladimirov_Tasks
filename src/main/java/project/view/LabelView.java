@@ -17,19 +17,19 @@ public class LabelView {
     }
 
     public Label getLabel(String name) {
-        return labelController.get(name);
+        return labelController.getByName(name);
     }
 
     public void update() {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the entry for editing: ");
+        System.out.print("Введите запись для редактирования: ");
         String searchName = sc.nextLine();
-        System.out.print("Record for editing: ");
+        System.out.print("Запись для редактирования: ");
         Label search = getLabel(searchName);
         toString(search);
-        System.out.print("Enter new value: ");
+        System.out.print("Введите новое значение: ");
         String updateLabelName = sc.nextLine();
-        System.out.print(ANSI_RED + "The existing entry will be replaced with \"" +
+        System.out.print(ANSI_RED + "Существующая запись будет заменена на \"" +
                 updateLabelName + "\"" +
                 " (Y/N): " +
                 ANSI_RESET);
@@ -40,11 +40,11 @@ public class LabelView {
             Label result = labelController.update(search);
             if (result != null) {
                 System.out.println(ANSI_GREEN +
-                        "Post edited to: " + toString(search) +
+                        "Запись отредактирована на: " + toString(search) +
                         ANSI_RESET);
 
             }
-        } else System.out.println("Editing canceled by user.");
+        } else System.out.println("Редактирование отменено пользователем.");
 
         sc.close();
     }
@@ -52,22 +52,22 @@ public class LabelView {
     public Label save() {
         Label label = labelController.save(createLabelDialog());
         if (label.getId() != null) {
-            System.out.println(ANSI_GREEN + "Tag: " + toString(label) + " saved." + ANSI_RESET);
-        } else System.err.println("Failed to save.");
+            System.out.println(ANSI_GREEN + "Регион: " + toString(label) + " сохранен." + ANSI_RESET);
+        } else System.err.println("Не удалось сохранить.");
 
         return label;
     }
 
     public Label createLabelDialog() {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the tag: ");
-        String label = sc.nextLine();
-        while (!matchLabel(label)) {
-            System.err.print("You misspelled the tag, please try again.");
-            System.out.print("Enter the tag: ");
-            label = sc.nextLine();
+        System.out.print("Введите регион: ");
+        String input = sc.nextLine();
+        while (!matchLabel(input)) {
+            System.err.print("Вы ошиблись в написании региона, попробуйте еще раз.");
+            System.out.print("Введите регион: ");
+            input = sc.nextLine();
         }
-        return new Label(null, label);
+        return new Label(input);
     }
 
     public String toString(Label label) {
@@ -77,7 +77,7 @@ public class LabelView {
     }
 
     private boolean matchLabel(String label) {
-        if (label.matches("[A-z\\s]+")) {
+        if (label.matches("[A-я\\s]+")) {
             return true;
         }
 

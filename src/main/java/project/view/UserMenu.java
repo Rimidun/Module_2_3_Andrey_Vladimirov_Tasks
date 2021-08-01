@@ -2,7 +2,7 @@ package project.view;
 
 import java.util.Scanner;
 
-public class UserMenu {
+public final class UserMenu {
     private static UserMenu INSTANCE;
     private final WriterView writerView;
 
@@ -23,13 +23,13 @@ public class UserMenu {
     }
 
     public void showMainMenu() {
-        System.out.println("Select an action:");
+        System.out.println("Выберите действие:");
         System.out.println();
-        System.out.println("[1] - Add user.");
-        System.out.println("[2] - Find user.");
-        System.out.println("[3] - Change user.");
-        System.out.println("[4] - Delete user.");
-        System.out.println("[0] - Exit.");
+        System.out.println("[1] Добавить пользователя.");
+        System.out.println("[2] Найти пользователя.");
+        System.out.println("[3] Изменить пользователя.");
+        System.out.println("[4] Удалить пользователя.");
+        System.out.println("[0] Выход.");
 
         switch (matchMenuNumber()) {
             case 1: {
@@ -48,27 +48,27 @@ public class UserMenu {
                 System.exit(0);
             }
             default: {
-                System.out.println("Non-existent menu item selected.");
+                System.out.println("Выбран не существующий пункт меню.");
                 showMainMenu();
             }
         }
     }
 
     public void createUserMenu() {
-        System.out.println("User creation menu.");
+        System.out.println("Меню создания пользователя.");
         writerView.createUserDialog();
         showMainMenu();
     }
 
     public void searchUserMenu() {
-        System.out.println("User search menu. Select your search criteria:");
-        System.out.println("[1] - Search by first name.");
-        System.out.println("[2] - Search by last name.");
-        System.out.println("[3] - Search by first name and last name.");
-        System.out.println("[4] - Search by content.");
-        System.out.println("[5] - Search by tag.");
-        System.out.println("[6] - Exit to the main menu.");
-        System.out.println("[0] - Exit.");
+        System.out.println("Меню поиска пользователя. Выберите критерий поиска:");
+        System.out.println("[1] Поиск по имени.");
+        System.out.println("[2] Поиск по фамилии.");
+        System.out.println("[3] Поиск по имени и фамилии.");
+        System.out.println("[4] Поиск по контенту.");
+        System.out.println("[5] Поиск по региону.");
+        System.out.println("[6] Выйти в главное меню.");
+        System.out.println("[0] Выход.");
 
         int select = matchMenuNumber();
         switch (select) {
@@ -104,7 +104,7 @@ public class UserMenu {
                 System.exit(0);
             }
             default: {
-                System.out.println("Non-existent menu item selected.");
+                System.out.println("Выбран не существующий пункт меню.");
                 searchUserMenu();
             }
         }
@@ -113,13 +113,13 @@ public class UserMenu {
     }
 
     public void removeUserMenu(){
-        System.out.println("Delete user menu:");
+        System.out.println("Меню удаления пользователя:");
         writerView.removeUserDialog();
         showMainMenu();
     }
 
     public void updateUserMenu(){
-        System.out.println("User edit menu:");
+        System.out.println("Меню редактирования пользователя:");
         writerView.updateUserDialog();
         showMainMenu();
     }
@@ -129,19 +129,19 @@ public class UserMenu {
         int select = -1;
 
         Scanner sc = new Scanner(System.in);
-        System.out.print("Select a menu item: ");
+        System.out.print("Выберите пункт меню: ");
         String input = sc.nextLine();
 
         while (!input.matches("[0-9]")) {
-            System.out.println("Input error, try again");
-            System.out.print("Select a menu item: ");
+            System.out.println("Ошибка ввода, попробуйте еще раз.");
+            System.out.print("Выберите пункт меню: ");
             input = sc.nextLine();
         }
 
         try {
             select = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            System.out.println("Error");
+            System.out.println("Ошибка!!! Не могу спарсить число!");
         }
 
         return select;
@@ -149,7 +149,7 @@ public class UserMenu {
 
     private void sleep() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Press any key to continue ...");
+        System.out.println("Для продолжения нажмите любую клавишу...");
         sc.nextLine();
     }
 }

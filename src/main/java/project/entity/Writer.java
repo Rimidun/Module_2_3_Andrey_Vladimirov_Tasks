@@ -29,7 +29,7 @@ public class Writer{
     private String lastName;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "region_id", referencedColumnName = "id")
+    @JoinColumn(name = "label_id", referencedColumnName = "id")
     private Label label;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "writer")

@@ -2,21 +2,27 @@ package project.controller;
 
 import project.entity.Writer;
 import project.service.WriterService;
-import project.service.implementation.JdbcWriterServiceImpl;
+import project.service.implementation.WriterServiceImpl;
+
+import java.util.List;
 
 public class WriterController {
     private final WriterService writerService;
 
     public WriterController() {
-        this.writerService = new JdbcWriterServiceImpl();
+        this.writerService = new WriterServiceImpl();
     }
 
     public Writer save(Writer writer){
         return writerService.save(writer);
     }
 
-    public Writer get(Long id){
-        return writerService.get(id);
+    public Writer update(Writer writer){
+        return writerService.update(writer);
+    }
+
+    public Writer getById(Long id){
+        return writerService.getById(id);
     }
 
     public Writer getByFirstName(String firstName){
@@ -27,15 +33,11 @@ public class WriterController {
         return writerService.getByLastName(lastName);
     }
 
-    public Writer getByLabel(Long labelId){
-        return writerService.getByLabel(labelId);
+    public List<Writer> getAll(){
+        return writerService.getAll();
     }
 
-    public Writer update(Writer writer){
-        return writerService.update(writer);
-    }
-
-    public void remove(Writer writer){
-        writerService.remove(writer);
+    public boolean remove(Writer writer){
+        return writerService.remove(writer);
     }
 }
