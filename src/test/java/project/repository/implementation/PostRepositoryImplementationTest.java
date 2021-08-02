@@ -28,7 +28,7 @@ public class PostRepositoryImplementationTest {
 
     @Test
     void findByName_also_findByContent() {
-        Post result = postRepository.getByName("Single saving");
+        Post result = postRepository.getByName("first saving");
 
         assertNotNull(result);
         assertNotNull(result.getId());
@@ -37,7 +37,7 @@ public class PostRepositoryImplementationTest {
         assertNotNull(result.getUpdated());
         assertNotNull(result.getWriter());
 
-        assertEquals("Single saving", result.getContent());
+        assertEquals("first saving", result.getContent());
     }
 
     @Test
@@ -68,7 +68,7 @@ public class PostRepositoryImplementationTest {
 
     @Test
     void save() {
-        Post post = new Post("Single saving");
+        Post post = new Post("first saving");
         post.setWriter(writer);
         post = postRepository.save(post);
 
@@ -79,7 +79,7 @@ public class PostRepositoryImplementationTest {
         assertNotNull(post.getCreate());
         assertNotNull(post.getUpdated());
 
-        assertEquals(post.getContent(), "Single saving");
+        assertEquals(post.getContent(), "first saving");
         assertEquals(post.getWriter(), writer);
     }
 
@@ -97,12 +97,12 @@ public class PostRepositoryImplementationTest {
         assertNotNull(post.getUpdated());
 
         assertNotEquals(post.getCreate(), post.getUpdated());
-        assertNotEquals("Single saving", post.getContent());
+        assertNotEquals("first saving", post.getContent());
 
         assertEquals(6L, post.getId());
         assertEquals(writer.getId(), post.getWriter().getId());
 
-        post.setContent("Single saving");
+        post.setContent("first saving");
         post = postRepository.update(post);
     }
 
